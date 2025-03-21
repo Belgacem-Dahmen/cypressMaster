@@ -1,0 +1,17 @@
+{
+  "name": "cypress-training",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx cypress run",
+    "test:mo": "npx cypress run --spec 'cypress/e2e/Middle-office/**/*'",
+    "test:bo": "npx cypress run --spec 'cypress/e2e/Back-office/**/*'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "cypress": "^14.2.0"
+  }
+}
