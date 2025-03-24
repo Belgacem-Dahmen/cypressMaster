@@ -1,5 +1,8 @@
 describe('Forget Password tests on preprod', () => {
-    beforeEach(() => {
+  
+  
+  beforeEach(() => {
+    cy.viewportForDevice('desktop')
       cy.visit('/#/oubli-mot-de-passe');
       cy.get('input[aria-label="E-mail"]').as('emailInput')
       cy.get('button[type="button"]').as('submitButton')
@@ -43,5 +46,25 @@ describe('Forget Password tests on preprod', () => {
       it('should display the group logo', () => {
         cy.get('.IPDAutoLogo').should('be.visible')
       })
+      it('should submit a request for a forgot password',() => {
+        cy.intercept('POST', 'https://mmp-backoffice.test.infopro-digital-automotive.com/api/v1/service-authentification/oubli-mot-de-passe', (req) => {
+        
+          expect(req.body).to.include({
+            email:"admin@admin.com"
+          });
+        }).as('forgetPasswordRequest');
+        cy.get('@emailInput').type('admin@admin.com');
+        cy.get('@submitButton').click({force: true});
+    
+      
+      cy.wait('@forgetPasswordRequest').then((interception) => {
+        expect(interception.response.statusCode).to.equal(200);
+        expect(interception.response.body).to.have.property('message','If this email is registered, you will receive a password reset link shortly');
+
+      }) ;
+      cy.contains('Un mail vous a été envoyé à dialogBlock pour réinitialiser votre mot de passe. Merci de vérifier votre boite de réception').should('be.visible')
+      cy.get('.v-btn__content').contains("Retour à la page de connexion").should('be.visible')
+      })
+      
     })
 })
