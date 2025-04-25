@@ -27,6 +27,7 @@ Thumbs.db
 
 # Environment variables
 .env
+cypress.env.json
 
 # Package lock file
 package-lock.json

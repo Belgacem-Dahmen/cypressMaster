@@ -2,7 +2,7 @@ const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
   e2e: {
-    baseUrl: 'https://mmp-backoffice.test.infopro-digital-automotive.com',
+    baseUrl: 'https://sandbox.watad.vip',
     devices: {
       mobile: {
         viewportWidth: 375, // iPhone X size (mobile)

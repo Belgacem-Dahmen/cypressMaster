@@ -2,7 +2,6 @@ describe('Forget Password tests on preprod', () => {
   
   
   beforeEach(() => {
-    cy.viewportForDevice('desktop')
       cy.visit('/#/oubli-mot-de-passe');
       cy.get('input[aria-label="E-mail"]').as('emailInput')
       cy.get('button[type="button"]').as('submitButton')
