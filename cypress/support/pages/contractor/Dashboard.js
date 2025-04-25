@@ -1,14 +1,17 @@
-import 'cypress-xpath';
+import "cypress-xpath";
 
 class DashboardPage {
-
   // Selectors
   get submitNewRfqButton() {
-    return cy.xpath('//*[@id="__next"]/div[3]/div/div[2]/div[1]/div/div[4]/a/button');
+    return cy.xpath(
+      "/html/body/div[1]/div[3]/div/div[2]/div[1]/div/div[4]/a/button"
+    );
   }
 
   get requestCreditButton() {
-    return cy.xpath('//*[@id="__next"]/div[3]/div/div[2]/div[2]/div/div[1]/a/button');
+    return cy.xpath(
+      '//*[@id="__next"]/div[3]/div/div[2]/div[2]/div/div[1]/a/button'
+    );
   }
 
   get pageTitle() {
@@ -106,27 +109,24 @@ class DashboardPage {
   get expiredOrdersCard() {
     return cy.xpath('//*[@id="expired-orders-card"]');
   }
-visit() {
-  cy.visit('/en/app');
-}
-  // Action to visit the dashboard page and alias the elements
-  aliasElements() {
-    cy.xpath('//*[@id="__next"]/div[3]/div/div[2]/div[1]/div/div[2]/button').as('submitNewRfqButton');
-    // Add other element aliases here if necessary
+  visit() {
+    cy.visit("/en/app");
   }
+  // Action to visit the dashboard page and alias the elements
 
   // Intercept all GET requests
   interceptGetRequests() {
-    cy.intercept('GET', '/api/**').as('getRequests'); // Intercepts all GET requests
-    cy.wait('@getRequests').then((interception) => {
-      cy.log('Intercepted GET request:', interception);
+    cy.intercept("GET", "/api/**").as("getRequests"); // Intercepts all GET requests
+    cy.wait("@getRequests").then((interception) => {
+      cy.log("Intercepted GET request:", interception);
       expect(interception.response.statusCode).to.eq(200);
     });
   }
 
   // Verify that elements are visible
   verifyElementsAreVisible() {
-   cy.get('submitNewRfqButton').should('be.visible');
+    this.submitNewRfqButton.should("be.visible");
+    this.amountWaitingForApprovalCard.should("be.visible");
   }
 }
 
