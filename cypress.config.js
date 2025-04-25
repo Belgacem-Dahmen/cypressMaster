@@ -2,7 +2,7 @@ const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
   e2e: {
-    baseUrl: 'https://sandbox.watad.vip',
+    baseUrl: "https://sandbox.watad.vip",
     devices: {
       mobile: {
         viewportWidth: 375, // iPhone X size (mobile)
@@ -15,6 +15,10 @@ module.exports = defineConfig({
       desktop: {
         viewportWidth: 1280, // Standard desktop size
         viewportHeight: 720, // Standard desktop height
+      },
+      alien: {
+        viewportWidth: 1920, // Standard desktop size
+        viewportHeight: 1233, // Standard desktop height
       },
     },
     setupNodeEvents(on, config) {
