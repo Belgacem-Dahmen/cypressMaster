@@ -1,6 +1,6 @@
 import RfqListPage from "../../../support/pages/contractor/RfqList";
 
-describe("Contractor RFQ List", () => {
+describe("Contractor RFQ List Ui Verification", () => {
   let rfqListPage;
   before(() => {
     rfqListPage = new RfqListPage();
@@ -99,7 +99,7 @@ describe("Contractor RFQ List", () => {
   it("should display the Number of Pages Select", () => {
     rfqListPage.verifyNumberOfPagesSelectIsVisible();
   });
-  it("should search for RFq by text", () => {
+  it.only("should search for RFq by text", () => {
     rfqListPage.searchByText("flow");
   });
   it("should search by project", () => {
@@ -108,7 +108,7 @@ describe("Contractor RFQ List", () => {
   it("should clear Filters", () => {
     rfqListPage.clearFilters();
   });
-  it.only("search by date", () => {
+  it("search by date", () => {
     rfqListPage.searchByDate("2025-04-01", "2025-04-04");
   });
 });

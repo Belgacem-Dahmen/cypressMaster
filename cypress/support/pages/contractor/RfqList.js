@@ -293,8 +293,6 @@ class RfqListPage {
 
     // Ensure 'to' input is visible and interactable before typing
     this.toInput.should("be.visible").click().clear().type(to);
-
-    // Ensure the apply button is clickable
     this.applyDateButton
       .should("be.visible")
       .click()
@@ -302,10 +300,8 @@ class RfqListPage {
         cy.wait("@getRfqList").then((interception) => {
           console.log("Intercepted RFQ request:", interception.response);
         });
-        cy.screenshot();
       });
 
-    // Optional: Take a screenshot for debugging
   }
 }
 

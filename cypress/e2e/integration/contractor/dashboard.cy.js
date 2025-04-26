@@ -1,6 +1,6 @@
 import DashboardPage from "../../../support/pages/contractor/Dashboard";
 
-describe("Contractor Navigation", () => {
+describe("Contractor Dashboard Ui Verification", () => {
   let dashboard;
   before(() => {
     cy.viewportForDevice("alien");
