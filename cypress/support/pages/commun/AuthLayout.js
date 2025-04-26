@@ -2,7 +2,9 @@ import "cypress-xpath";
 
 class AuthLayout {
   // Selectors
-
+  get sidebar() {
+    return cy.xpath('//*[@id="__next"]/div[3]/div/div[1]');
+  }
   get topbar() {
     return cy.xpath('//*[@id="__next"]/div[3]/div/div[2]/div[1]/div');
   }

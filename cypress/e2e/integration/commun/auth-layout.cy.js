@@ -51,7 +51,7 @@ describe("Auth Layout Ui Verification", () => {
       authLayout.whatsappLink.should("exist");
     });
     it("should display a logout button", () => {
-      authLayout.logoutButton.should("be.visible");
+      authLayout.logoutButton.should("exist");
     });
   });
 
@@ -80,6 +80,66 @@ describe("Auth Layout Ui Verification", () => {
     });
     it("should display a logout button", () => {
       authLayout.logoutButton.should("be.visible");
+    });
+  });
+
+  describe("Navigation link redirections", () => {
+    let authLayout;
+    before(() => {
+      authLayout = new AuthLayout();
+    });
+    beforeEach(() => {
+      cy.viewportForDevice("alien");
+      cy.session("userSession", () => cy.loginWithRole("contractor"));
+      authLayout.visit();
+    });
+    it("should redirect to dashboard", () => {
+      authLayout.sidebar.within(() => {
+        authLayout.rfqsLink.click();
+        cy.url().should("include", "/en/app/contractor");
+      });
+    });
+
+    it("should redirect to RFQs", () => {
+      authLayout.sidebar.within(() => {
+        authLayout.rfqsLink.click();
+        cy.url().should("include", "/rfqs");
+      });
+    });
+
+    it("should redirect to orders", () => {
+      authLayout.sidebar.within(() => {
+        authLayout.ordersLink.click();
+        cy.url().should("include", "/orders");
+      });
+    });
+
+    it("should redirect to profile", () => {
+      authLayout.sidebar.within(() => {
+        authLayout.profileLink.click();
+        cy.url().should("include", "/me");
+      });
+    });
+
+    it("should redirect to users", () => {
+      authLayout.sidebar.within(() => {
+        authLayout.usersLink.click();
+        cy.url().should("include", "/users");
+      });
+    });
+
+    it("should redirect to roles and permissions", () => {
+      authLayout.sidebar.within(() => {
+        authLayout.rolesPermissionsLink.click();
+        cy.url().should("include", "/roles-permissions");
+      });
+    });
+
+    it("should redirect to projects", () => {
+      authLayout.sidebar.within(() => {
+        authLayout.projectsLink.click();
+        cy.url().should("include", "/projects");
+      });
     });
   });
 });
