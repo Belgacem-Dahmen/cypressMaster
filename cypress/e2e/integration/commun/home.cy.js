@@ -165,7 +165,7 @@ describe("Top Bar Ui Verifications", () => {
     home.registerButton.should("be.visible");
   });
 });
-describe.only("Register Modal Ui Verifications", () => {
+describe("Register Modal Ui Verifications", () => {
   let home;
 
   before(() => {
@@ -183,7 +183,7 @@ describe.only("Register Modal Ui Verifications", () => {
     home.registerModal.should("exist");
   });
 });
-describe.only("Login Modal Ui Verifications", () => {
+describe("Login Modal Ui Verifications", () => {
   let home;
 
   before(() => {

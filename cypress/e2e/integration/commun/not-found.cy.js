@@ -36,4 +36,8 @@ describe("Notfound Page UI Verification", () => {
   it("should display Go Back Button", () => {
     notfound.goBackButton.should("be.visible");
   });
+
+  it("should get element by his Xpath ", () => {
+    notfound.testXpath.should("be.visible");
+  });
 });

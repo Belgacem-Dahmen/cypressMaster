@@ -9,7 +9,7 @@ class Home {
     this.visit();
     cy.wait("@getApiData");
   }
-
+  
   get promotionalModal() {
     return cy.xpath('//*[@id="headlessui-dialog-panel-:r9:"]');
   }

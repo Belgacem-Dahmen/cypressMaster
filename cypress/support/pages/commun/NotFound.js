@@ -28,6 +28,9 @@ class Notfound {
   get goBackButton() {
     return cy.contains("Go back");
   }
-}
 
+  get testXpath() {
+    return cy.getByXpath('//*[@id="__next"]/div[3]/div[1]/nav/div/div/button');
+  }
+}
 export default Notfound;
